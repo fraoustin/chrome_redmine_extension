@@ -1,0 +1,32 @@
+{
+  "name": "Redmine",
+  "description": "Quick add redmine",
+  "version": "0.1",
+  "background": {
+    "service_worker": "redmine.js"
+  },
+  "manifest_version": 3,
+  "icons": {
+    "16": "redmine16.png",
+    "48": "redmine48.png",
+    "128": "redmine128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "redmine16.png",
+      "48": "redmine48.png",
+      "128": "redmine128.png"
+    }
+  },
+  "commands": {
+    "addredmine": {
+      "suggested_key": { "default": "Alt + R" },
+      "description": "Quick add redmine"
+    }
+  },
+  "permissions": ["contextMenus", "activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "*://*/*"
+  ]
+}
