@@ -82,7 +82,8 @@ else{
 function openRedmine(txt) {
   chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     var currentTab = tabs[0];
-    chrome.storage.sync.get(['urlParam'], function(result) {    
+    chrome.storage.sync.get(['urlParam'], function(result) {
+      var foundIssue = false;
       var urltarget = result.urlParam + '/projects/havea/issues/new';
       var id = '#issue_description';
       var regex = /#(\d+)/;
@@ -92,17 +93,38 @@ function openRedmine(txt) {
         urltarget = result.urlParam + '/issues/' + motifTrouve + '/edit';
         var id = '#issue_notes';
         txt = "> " + txt.replace(/\n/g, "\n> ");
+        foundIssue = true;
       }
-      chrome.tabs.create({ url: urltarget }, function(newTab) {
-        // Injecte du texte dans la nouvelle tab
-        chrome.scripting.executeScript({
-          target: { tabId: newTab.id },
-          function: function(txt, id) {
-            document.querySelector(id).value = txt;
-          },
-          args: [txt, id]
+      if (foundIssue) {
+        chrome.tabs.create({ url: urltarget }, function(newTab) {
+          // Injecte du texte dans la nouvelle tab
+          chrome.scripting.executeScript({
+            target: { tabId: newTab.id },
+            function: function(txt, id) {
+              document.querySelector(id).value = txt;
+            },
+            args: [txt, id]
+          });
         });
-      });
+      } else {        
+        chrome.storage.sync.set({ 'txtSelect': txt }, function() {
+          chrome.windows.create({
+            type: 'popup',
+            url: 'selectissues.html',
+            width: 400,
+            height: 300,
+            focused: true,
+          });
+        });
+      }
     });
   });
 }
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.closePopup) {
+    chrome.windows.getCurrent(function(window) {
+      chrome.windows.remove(window.id);
+    });
+  }
+});
