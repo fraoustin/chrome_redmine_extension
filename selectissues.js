@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     chrome.storage.sync.get(['urlParam'], function(result) {
         targetURL = result.urlParam || '';
-        console.log(targetURL);
         targetURL = targetURL + '/issues?per_page=100&sort=due_date%2Cid%3Adesc';
-        console.log(targetURL);
         const xhr = new XMLHttpRequest();
         xhr.open('GET', targetURL, true);
         xhr.onreadystatechange = function () {
@@ -14,9 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (xhr.status === 200) {
                     const container = document.createElement('div');
                     container.innerHTML = xhr.responseText;
-                    const subjectTDs = container.querySelectorAll('td.subject');
+                    const subjectTDs = container.querySelectorAll('td.subject a');
                     subjectTDs.forEach(td => {
-                        console.log(td.textContent);
+                        console.log(td.textContent, td.getAttribute("href").split('/').pop());
+                        var li = document.createElement('li');
+                        var newContent = document.createTextNode(td.textContent);
+                        li.appendChild(newContent);
+                        document.getElementById('listissue').appendChild(li);
                     });
                 } else {
                     console.error('Erreur HTTP! Statut :', xhr.status);
