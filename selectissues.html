@@ -2,28 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="color-scheme" content="light primary" />
+
+    <link rel="stylesheet" href="tabler.css">
+    <link rel="stylesheet" href="siimple-icons.css" />
+
     <style>
         #app {
-            width: 400px;
+            width: 800px;
         }
     </style>
   </head>
   <body>
-    <div id="app" class="popup-content">
-      <h1 class="app-name">Redmine</h1>
-
-      <div id="display-container">      
-        <button id="newIssue">Nouveau ticket</button>
+    <div class="page-wrapper" style="padding-left: 20px;padding-right: 20px;">
+      <div class="page-body">  
+        <div id="table" class="table-responsive">
+            <table class="table table-vcenter">
+                <thead class="sticky-top">
+                    <tr>
+                        <th>Issue Id</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody id="listissue">
+                  <tr id="0" class="cursor-pointer">
+                    <td>0</td>
+                    <td>New Issue</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
       </div>
-      <ul id="listissue"></ul>
-
-      <footer>
-        <p>
-          Quick add comment in Redmine 0.1
-        </p>
-      </footer>
     </div>
     
+
+    <footer>
+      <p>
+        Quick add comment in Redmine 0.1
+      </p>
+    </footer>
+    
     <script src="selectissues.js"></script>
+    <script src="search.js"></script>
+    <script src="tabler.js"></script>
   </body>
 </html>
