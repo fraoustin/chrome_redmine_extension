@@ -2,37 +2,55 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         #app {
             width: 400px;
         }
+        tr {
+          border-color: white !important;
+        }
     </style>
+
+    <link rel="stylesheet" href="tabler.css">
+    <link rel="stylesheet" href="siimple-icons.css" />
   </head>
   <body>
-    <div id="app" class="popup-content">
-      <h1 class="app-name">Redmine</h1>
-
-      <div id="display-container">
-        <table>
-          <tr>
-            <td>URL</td>
-            <td><input type="url" id="urlInput" /></td>
-          </tr>
-          <tr>
-            <td>Project Default</td>
-            <td><input type="project" id="projectInput" /></td>
-          </tr>
-        </table>        
-        <button id="saveButton">Enregistrer</button>
-      </div>
-
-      <footer>
-        <p>
-          Quick add comment in Redmine 0.1
-        </p>
-      </footer>
+    <div id="app" class="popup-content"> 
+        <div id="table">
+          <table class="table table-vcenter">
+            <tr>
+              <td><h1>Redmine</h1></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>URL</td>
+              <td><input class="form-control m-2" type="url" id="urlInput" /></td>
+            </tr>
+            <tr>
+              <td>Project Default</td>
+              <td><input class="form-control m-2" type="project" id="projectInput" /></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <div class="row align-items-center">
+                  <div class="col-auto ms-auto">
+                    <a href="#" class="btn btn-primary btn-pill text-end" id="saveButton">Enregistrer</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Quick add comment in Redmine 0.1</td>
+            </tr>
+          </table>
+        </div>
     </div>
     
     <script src="popup.js"></script>
+    <script src="search.js"></script>
+    <script src="tabler.js"></script>
   </body>
 </html>

@@ -104,4 +104,5 @@ document.addEventListener('DOMContentLoaded', function() {
         chrome.windows.update(currentWindow.id, { width: 800, height: 500 });
     });
     newIssue.addEventListener('click', createIssue);
+    document.getElementById("search").focus();
 });

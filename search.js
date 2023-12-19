@@ -62,7 +62,3 @@ function searchAdvanced(idinput, idtable) {
 if (document.getElementById("search")) {
     document.getElementById("search").addEventListener("input", function () { searchAdvanced("search", "table") });
 };
-
-if (document.getElementById("search_item")) {
-    document.getElementById("search_item").addEventListener("input", function () { searchAdvanced("search_item", "table") });
-};

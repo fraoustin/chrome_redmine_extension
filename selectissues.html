@@ -16,10 +16,19 @@
         #app {
             width: 800px;
         }
+        .hidden {          
+          display:none;
+        }
     </style>
   </head>
   <body>
-    <div class="page-wrapper" style="padding-left: 20px;padding-right: 20px;">
+    <div class="page-wrapper" style="padding-left: 20px;padding-right: 20px;">      
+      <div class="input-icon">
+        <span class="input-icon-addon">
+            <i class="si-search fs-1"></i>
+        </span>
+        <input id="search" type="text" value="" class="form-control form-control-rounded m-2" placeholder="Rechercher dans les documents">
+      </div>
       <div class="page-body">  
         <div id="table" class="table-responsive">
             <table class="table table-vcenter">
@@ -39,6 +48,7 @@
         </div>
       </div>
     </div>
+    <a href="#" class="btn btn-success" id="saveButton">Enregistrer</a>
     
 
     <footer>
