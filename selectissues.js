@@ -46,7 +46,7 @@ function updateIssue(idIssue) {
                 chrome.scripting.executeScript({
                     target: { tabId: newTab.id },
                     function: function(txt, id) {
-                    document.querySelector(id).value = txt;
+                        document.querySelector(id).value = "> " + txt.replace(/\n|\r/g, "\n> ");
                     },
                     args: [txt, id]
                 });
