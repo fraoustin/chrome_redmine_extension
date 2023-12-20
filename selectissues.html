@@ -19,16 +19,26 @@
         .hidden {          
           display:none;
         }
+        .ms-auto {
+            margin-left: 10px !important;
+        }
     </style>
   </head>
   <body>
-    <div class="page-wrapper" style="padding-left: 20px;padding-right: 20px;">      
-      <div class="input-icon">
-        <span class="input-icon-addon">
-            <i class="si-search fs-1"></i>
-        </span>
-        <input id="search" type="text" value="" class="form-control form-control-rounded m-2" placeholder="Rechercher dans les documents">
-      </div>
+    <div class="page-wrapper" style="padding-left: 20px;padding-right: 20px;"> 
+      <div class="row align-items-center">
+        <div class="col">     
+          <div class="input-icon">
+            <span class="input-icon-addon">
+                <i class="si-search fs-1"></i>
+            </span>
+            <input id="search" type="text" value="" class="form-control form-control-rounded m-2" placeholder="Rechercher dans les documents">
+          </div>
+        </div>
+        <div class="col-auto ms-auto">
+          <a href="#" class="btn btn-primary" id="0">New Issue</a>
+        </div>
+      </div>  
       <div class="page-body">  
         <div id="table" class="table-responsive">
             <table class="table table-vcenter">
@@ -39,10 +49,6 @@
                     </tr>
                 </thead>
                 <tbody id="listissue">
-                  <tr id="0" class="cursor-pointer">
-                    <td>0</td>
-                    <td>New Issue</td>
-                  </tr>
                 </tbody>
             </table>
         </div>

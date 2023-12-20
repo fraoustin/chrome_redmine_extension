@@ -47,6 +47,7 @@ function updateIssue(idIssue) {
                     target: { tabId: newTab.id },
                     function: function(txt, id) {
                         document.querySelector(id).value = "> " + txt.replace(/\n|\r/g, "\n> ");
+                        window.scrollTo(0, document.body.scrollHeight);
                     },
                     args: [txt, id]
                 });
@@ -105,4 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     newIssue.addEventListener('click', createIssue);
     document.getElementById("search").focus();
+    document.getElementById("search").addEventListener(
+        "keydown", (event) => {
+            if (event.key == 'Enter') {
+                var tds = document.getElementById('table').querySelectorAll("tbody tr:not(.hidden)");
+                if (tds.length > 0) {
+                    updateIssue(tds[0].querySelectorAll("td")[0].innerText);
+                }
+            }
+        }
+    );
 });
