@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
       projectInput.value = result.projectParam || '';
     });
     chrome.storage.sync.get(['carComment'], function(result) {
-      carComment.value = result.carComment || '';
+      carCommentInput.value = result.carComment || '';
     });
   
     // Enregistrer la nouvelle valeur du paramètre URL
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
       chrome.storage.sync.set({ 'projectParam': newProject }, function() {
         console.log('Paramètre Project enregistré : ' + newProject);
       });
-      var carComment = carComment.value;
+      var carComment = carCommentInput.value;
       chrome.storage.sync.set({ 'carComment': carComment }, function() {
         console.log('Paramètre carComment enregistré : ' + carComment);
       });
